@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import notFoundImg from '@/assets/NotFound.jpg'
 
 const skiFacilities = ref([]);
 const selectedFacility = ref("");
@@ -22,275 +21,382 @@ onMounted(async () => {
 <template>
   <section id="pricing" class="pricing section">
 
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
+    <div class="container selector-wrapper" data-aos="fade-up">
 
-      <div class="choseSkiFacility-section">
-        <form action="/Slope/User/home" method="POST" class="choseSkiFacility-form">
-          <h2>Seleziona l'impianto e analizza i prezzi</h2>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="skiFacilities">Scegli un impianto:</label>
-              <select name="skiFacilities" id="skiFacility" multiple size="5">
-                <option v-for="facility in skiFacilities" :key="facility.id" :value="facility.id">
-                  {{ facility.name }} - {{ facility.liftStructures[0]?.name || "No lift" }}
-                </option>
-              </select>
-            </div>
-            <input type="submit" value="Visualizza selezione">
-          </div>
-        </form>
+      <div class="facility-card">
+        <h2>Select a resort and explore prices</h2>
+
+        <div class="form-group">
+          <label for="skiFacility">Choose a resort:</label>
+          <select v-model="selectedFacility" name="skiFacilities" id="skiFacility">
+            <option disabled value="">-- Select a resort --</option>
+            <option v-for="facility in skiFacilities" :key="facility.id" :value="facility.id">
+              {{ facility.name }} — {{ facility.liftStructures[0]?.name || 'No lift' }}
+            </option>
+          </select>
+        </div>
+        <router-link to="/login" class="facility-btn">
+          <span>View selection</span>
+          <i class="bi bi-arrow-right"></i>
+        </router-link>
       </div>
+    </div>
 
-    </div><!-- End Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Pricing</h2>
+      <p>Choose the plan that best fits your skiing days</p>
+    </div>
 
     <div class="container">
-
       <div class="row g-4 g-lg-0">
         <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
           <div class="pricing-item">
-            <h3>Giornaliero</h3>
-            <h4><sup>€</sup>20<span></span></h4>
+            <h3>Daily</h3>
+            <div class="price">
+              <sup>€</sup><span class="amount">20</span>
+              <small>/ day</small>
+            </div>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Il costo per l’utilizzo del servizio o prodotto è
-                  calcolato su base giornaliera.</span></li>
-              <li><i class="bi bi-check"></i> <span>Ideale per chi ha bisogno di flessibilità e vuole
-                  pagare solo per i giorni effettivi di utilizzo.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Cost calculated on a daily basis.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Ideal for flexible use — pay only for the days you ski.</span></li>
             </ul>
-            <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+            <div class="text-center">
+              <router-link to="/login" class="buy-btn">Buy now</router-link>
+            </div>
           </div>
-        </div><!-- End Pricing Item -->
-
+        </div>
+        
         <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
           <div class="pricing-item">
-            <h3>Settimanale</h3>
-            <h4><sup>€</sup>100<span></span></h4>
+            <div class="badge">Most Popular</div>
+            <h3>Weekly</h3>
+            <div class="price">
+              <sup>€</sup><span class="amount">100</span>
+              <small>/ week</small>
+            </div>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Tariffa conveniente per chi utilizza il servizio o
-                  prodotto per un’intera settimana.</span></li>
-              <li><i class="bi bi-check"></i> <span>Perfetto per chi ha bisogno di un periodo medio di
-                  utilizzo, con un risparmio rispetto al prezzo giornaliero.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Great value for a full week on the slopes.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Save more compared to the daily rate.</span></li>
             </ul>
-            <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+            <div class="text-center">
+              <router-link to="/login" class="buy-btn">Buy now</router-link>
+            </div>
           </div>
-        </div><!-- End Pricing Item -->
+        </div>
 
-        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="pricing-item">
-            <h3>Mensile</h3>
-            <h4><sup>€</sup>300<span></span></h4>
+            <h3>Monthly</h3>
+            <div class="price">
+              <sup>€</sup><span class="amount">300</span>
+              <small>/ month</small>
+            </div>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Offerta vantaggiosa per chi prevede un utilizzo
-                  continuativo e prolungato.</span></li>
-              <li><i class="bi bi-check"></i> <span>Il prezzo mensile garantisce il massimo risparmio
-                  rispetto alle tariffe giornaliere o settimanali.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Best option for frequent and extended use.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i>
+                <span>Maximum savings compared to daily or weekly rates.</span></li>
             </ul>
-            <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+            <div class="text-center">
+              <router-link to="/login" class="buy-btn">Buy now</router-link>
+            </div>
           </div>
-        </div><!-- End Pricing Item -->
+        </div>
       </div>
-
     </div>
 
   </section>
 </template>
 
 <style scoped>
-.pricing .pricing-item {
-  padding: 60px 40px;
-  box-shadow: 0 3px 20px -2px color-mix(in srgb, var(--default-color), transparent 90%);
+.pricing {
+  padding: 80px 0;
+}
+
+/* Section title */
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #63b3f5;
+  margin-bottom: 8px;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #5a7a9a;
+  font-size: 15px;
+}
+
+/* Facility selector */
+.selector-wrapper {
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.facility-card {
+  background: #ffffff;
+  border: 1px solid rgba(42, 82, 152, 0.12);
+  border-radius: 16px;
+  padding: 36px 40px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(26, 58, 92, 0.1);
+  text-align: center;
+}
+
+.facility-card h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #2a4a6a;
+  margin-bottom: 8px;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(42, 82, 152, 0.2);
+  color: #1a3a5c;
+  background: #f8fbff;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: auto;
+}
+
+.form-group select:focus {
+  border-color: #63b3f5;
+  box-shadow: 0 0 0 3px rgba(99, 179, 245, 0.15);
+}
+
+.facility-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(26, 58, 92, 0.25);
+  transition: all 0.3s ease;
+}
+
+.facility-btn i {
+  transition: transform 0.3s ease;
+}
+
+.facility-btn:hover {
+  background: linear-gradient(135deg, #2a5298, #63b3f5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(42, 82, 152, 0.35);
+  color: #ffffff;
+}
+
+.facility-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Pricing cards */
+.pricing-item {
+  padding: 48px 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(42, 82, 152, 0.12);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(26, 58, 92, 0.07);
   height: 100%;
   position: relative;
+  transition: all 0.3s ease;
 }
 
-.pricing h3 {
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 20px;
+.pricing-item:hover {
+  box-shadow: 0 12px 40px rgba(26, 58, 92, 0.15);
+  transform: translateY(-4px);
 }
 
-.pricing h4 {
-  font-size: 48px;
-  color: var(--accent-color);
-  font-family: var(--heading-font);
-  font-weight: 400;
+.pricing-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.pricing h4 sup {
-  font-size: 28px;
+.pricing-item .price {
+  margin-bottom: 24px;
+  color: #2a5298;
+  line-height: 1;
 }
 
-.pricing h4 span {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-  font-size: 18px;
-}
-
-.pricing ul {
-  padding: 20px 0;
-  list-style: none;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  text-align: left;
-  line-height: 20px;
-}
-
-.pricing ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.pricing ul i {
-  color: #059652;
-  font-size: 24px;
-  padding-right: 3px;
-}
-
-.pricing ul .na {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na i {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na span {
-  text-decoration: line-through;
-}
-
-.pricing .buy-btn {
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  background-color: var(--background-color);
+.pricing-item .price sup {
+  font-size: 1.4rem;
+  font-weight: 700;
+  vertical-align: top;
+  margin-top: 8px;
   display: inline-block;
-  padding: 8px 35px 10px 35px;
-  border-radius: 4px;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%);
-  transition: none;
+}
+
+.pricing-item .price .amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.pricing-item .price small {
+  font-size: 0.9rem;
+  color: #5a7a9a;
+  margin-left: 4px;
+}
+
+.pricing-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  text-align: left;
+}
+
+.pricing-item ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(42, 82, 152, 0.07);
+  color: #4a6a8a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pricing-item ul li:last-child {
+  border-bottom: none;
+}
+
+.pricing-item ul i {
+  color: #63b3f5;
   font-size: 16px;
-  font-weight: 500;
-  font-family: var(--heading-font);
-  transition: 0.3s;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-.pricing .buy-btn:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: var(--contrast-color);
+/* Buy button */
+.buy-btn {
+  display: inline-block;
+  padding: 11px 32px;
+  border-radius: 25px;
+  border: 2px solid #2a5298;
+  color: #2a5298;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
 }
 
-.pricing .featured {
-  z-index: 10;
+.buy-btn:hover {
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(26, 58, 92, 0.3);
+  transform: translateY(-2px);
 }
 
-.pricing .featured .pricing-item {
-  background: var(--accent-color);
+/* Featured (middle) card */
+.featured .pricing-item {
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  border-color: transparent;
+  box-shadow: 0 12px 48px rgba(26, 58, 92, 0.35);
 }
 
 @media (min-width: 992px) {
-  .pricing .featured .pricing-item {
-    transform: scale(1.02, 1.1);
+  .featured .pricing-item {
+    transform: scale(1.04);
+  }
+
+  .featured .pricing-item:hover {
+    transform: scale(1.04) translateY(-4px);
   }
 }
 
-.pricing .featured h3,
-.pricing .featured h4,
-.pricing .featured h4 span,
-.pricing .featured ul,
-.pricing .featured ul .na,
-.pricing .featured ul i,
-.pricing .featured ul .na i {
-  color: var(--contrast-color);
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #63b3f5;
+  color: #1a3a5c;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
-.pricing .featured .buy-btn {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--contrast-color);
+.featured .pricing-item h3,
+.featured .pricing-item .price,
+.featured .pricing-item .price small,
+.featured .pricing-item ul li,
+.featured .pricing-item ul i {
+  color: #ffffff;
 }
 
-.pricing .featured .buy-btn:hover {
-  background: color-mix(in srgb, var(--background-color), transparent 92%);
+.featured .pricing-item ul li {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-#pricing .container.section-title .choseSkiFacility-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  /* aggiunta per dare respiro su dispositivi piccoli */
-  font-family: 'Segoe UI', sans-serif;
+.featured .buy-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  color: #ffffff;
+  backdrop-filter: blur(4px);
 }
 
-#pricing .container.section-title .choseSkiFacility-form {
+.featured .buy-btn:hover {
   background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 16px;
-  text-align: center;
-  max-width: 900px;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /* migliora la visibilità */
+  color: #1a3a5c;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-#pricing .container.section-title .choseSkiFacility-form h2 {
-  margin-bottom: 20px;
-  color: rgb(0, 0, 0);
-  font-size: 22px;
-}
-
-#pricing .container.section-title .choseSkiFacility-form .form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#pricing .container.section-title .choseSkiFacility-form .form-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
-}
-
-#pricing .container.section-title .choseSkiFacility-form .form-group #skiFacility {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-#pricing .container.section-title .choseSkiFacility-form input[type="submit"] {
-  padding: 12px;
-  font-size: 16px;
-  background-color: #FF7F50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#pricing .container.section-title .choseSkiFacility-form input[type="submit"]:hover {
-  background-color: #FF7F50;
-}
-
-
-
-@media (max-width: 600px) {
-  #pricing .container.section-title .choseSkiFacility-form {
-    padding: 20px 15px;
+@media (max-width: 768px) {
+  .facility-card {
+    padding: 24px 20px;
   }
 
-  #pricing .container.section-title .choseSkiFacility-form h2 {
-    font-size: 20px;
+  .pricing-item {
+    padding: 36px 24px;
   }
-
-  #pricing .container.section-title .choseSkiFacility-form .form-group #skiFacility {
-    font-size: 14px;
-  }
-
-  #pricing .container.section-title .choseSkiFacility-form input[type="submit"] {
-    font-size: 14px;
-    padding: 10px;
-  }
-
 }
 </style>

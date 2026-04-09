@@ -1,181 +1,183 @@
 <template>
-    <section id="contact" class="contact section">
+  <section id="contact" class="contact section">
 
-<!-- Section Title -->
-<div class="container section-title" data-aos="fade-up">
-  <span>Contatti</span>
-  <h2>Contatti</h2>
-  <p>Puoi trovare tutti i nostri contatti qui</p>
-</div><!-- End Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Contatti</h2>
+      <p>Find all our contact details right here</p>
+    </div>
 
-<div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-  <div class="row gy-4">
+      <div class="row gy-4 justify-content-center">
 
-    <div class="col-lg-6">
-      <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
-        <i class="bi bi-geo-alt"></i>
-        <h3>Indirizzo</h3>
-        <p>Via per dove, 10</p>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h3>Address</h3>
+            <p>Via per dove, 10</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-telephone"></i>
+            </div>
+            <h3>Call Us</h3>
+            <p>+39 123 456 7890</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <h3>Email Us</h3>
+            <p>
+              <a href="mailto:slope.website.mail@gmail.com">slope.website.mail@gmail.com</a>
+            </p>
+          </div>
+        </div>
+
       </div>
-    </div><!-- End Info Item -->
 
-    <div class="col-lg-3 col-md-6">
-      <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-        <i class="bi bi-telephone"></i>
-        <h3>Chiamaci</h3>
-        <p>+39 123 456 7890</p>
+      <div class="row mt-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-12">
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23961.936908620435!2d13.399999!3d42.349998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13340f4f5b0b5a89%3A0x7a8a10d94772e0!2sL'Aquila%2C%20Italy!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+              frameborder="0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
       </div>
-    </div><!-- End Info Item -->
 
-    <div class="col-lg-3 col-md-6">
-      <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-        <i class="bi bi-envelope"></i>
-        <h3>Contattaci via mail</h3>
-        <p>slope.website.mail@gmail.com</p>
-      </div>
-    </div><!-- End Info Item -->
+    </div>
 
-  </div>
-
-  <div class="row gy-4 mt-1">
-    <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23961.936908620435!2d13.399999!3d42.349998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13340f4f5b0b5a89%3A0x7a8a10d94772e0!2sL&#39;Aquila%2C%20Italy!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div><!-- End Google Maps -->
-
-  </div>
-
-</div>
-
-</section>
+  </section>
 </template>
 <style scoped>
-.contact .info-item {
-  padding: 20px 0 30px 0;
-  box-shadow: 0px 0px 20px color-mix(in srgb, var(--default-color), transparent 90%);
+.contact {
+  padding: 80px 0;
 }
 
-.contact .info-item i {
-  color: var(--accent-color);
-  width: 56px;
-  height: 56px;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-  border-radius: 50%;
-  border: 2px dotted color-mix(in srgb, var(--accent-color), transparent 40%);
-}
-
-.contact .info-item h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 10px 0;
-}
-
-.contact .info-item p {
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.contact .php-email-form {
-  height: 100%;
-  padding: 30px;
-  box-shadow: 0px 0px 20px color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-@media (max-width: 575px) {
-  .contact .php-email-form {
-    padding: 20px;
-  }
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
+/* Section title */
+.section-title {
   text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
+  margin-bottom: 48px;
 }
 
-.contact .php-email-form .loading {
-  display: none;
-  background: var(--background-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
+.section-title span {
   display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #63b3f5;
+  margin-bottom: 8px;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #5a7a9a;
+  font-size: 15px;
+}
+
+/* Info cards */
+.info-item {
+  background: #ffffff;
+  border: 1px solid rgba(42, 82, 152, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(26, 58, 92, 0.08);
+  padding: 36px 24px;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(26, 58, 92, 0.15);
+}
+
+.info-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--background-color);
-  animation: animate-loading 1s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 16px rgba(26, 58, 92, 0.25);
+  transition: transform 0.3s ease;
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
+.info-item:hover .info-icon {
+  transform: scale(1.1);
+}
+
+.info-icon i {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.info-item h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.info-item p {
   font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  color: #5a7a9a;
+  margin: 0;
+  line-height: 1.6;
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
+.info-item p a {
+  color: #2a5298;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+.info-item p a:hover {
+  color: #63b3f5;
 }
 
-.contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 8px 30px 10px 30px;
-  transition: 0.4s;
-  border-radius: 0;
+/* Map */
+.map-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(26, 58, 92, 0.15);
+  border: 1px solid rgba(42, 82, 152, 0.1);
+  margin-top: 8px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+.map-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: none;
 }
 
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
+@media (max-width: 768px) {
+  .map-wrapper iframe {
+    height: 280px;
   }
 }
 </style>

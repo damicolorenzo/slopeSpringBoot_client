@@ -1,157 +1,216 @@
 <script setup>
-import { ref, onMounted } from 'vue'
 import notFoundImg from '@/assets/NotFound.jpg'
 
-const image = ref([])
+const members = [
+  {
+    imageUrl: 'http://localhost:9194/api/v1/images/image/download/3',
+    name: 'Andrea Esposito',
+    role: 'Ski Instructor',
+    bio: 'Whether it\'s your first run or you want to refine your technique, I\'ll guide you with passion and fun.',
+    social: {
+      twitter: 'https://x.com/',
+      facebook: 'https://facebook.com/',
+      instagram: 'https://instagram.com/',
+      linkedin: 'https://linkedin.com/'
+    }
+  },
+  {
+    imageUrl: 'http://localhost:9194/api/v1/images/image/download/4',
+    name: 'Giordana Di Fabio',
+    role: 'Snowboard Instructor',
+    bio: 'Live snowboarding to the fullest! With passion, energy, and experience, I\'ll help you find your style on the board.',
+    social: {
+      twitter: 'https://x.com/',
+      facebook: 'https://facebook.com/',
+      instagram: 'https://instagram.com/',
+      linkedin: 'https://linkedin.com/'
+    }
+  },
+  {
+    imageUrl: 'http://localhost:9194/api/v1/images/image/download/5',
+    name: 'Lorenzo D\'Amico',
+    role: 'Alpine Ski Instructor',
+    bio: 'Passionate about snow and high-altitude silence, I\'ll introduce you to alpine skiing with care, patience, and a deep love for the mountains.',
+    social: {
+      twitter: 'https://x.com/',
+      facebook: 'https://facebook.com/',
+      instagram: 'https://instagram.com/',
+      linkedin: 'https://linkedin.com/'
+    }
+  }
+];
 
-onMounted(async () => {
-  const res = await fetch('http://localhost:9194/api/v1/images/image/download/2')
-  const data = await res.json()
-
-  image.value = data
-})
+const onImgError = (e) => {
+  e.target.src = notFoundImg
+};
 </script>
 
 <template>
   <section id="team" class="team section">
 
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-      <span>Team</span>
       <h2>Team</h2>
-      <p>Trasformiamo idee in codice e codice in esperienze digitali.</p>
-    </div><!-- End Section Title -->
+      <p>We turn ideas into code and code into digital experiences.</p>
+    </div>
 
     <div class="container">
 
-      <div class="row">
+      <div class="row gy-4 justify-content-center">
 
-        <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div v-for="(member, index) in members" :key="index" class="col-lg-4 col-md-6 d-flex" data-aos="fade-up"
+          :data-aos-delay="(index + 1) * 100">
           <div class="member">
-            <img v-if="image1 && image1.length"
-              :src="`data:${image1[0].getType()};base64,${image1[0].getEncodedData()}`" class="img-fluid" />
-            <img v-else :src="notFoundImg" class="img-fluid" />
+            <div class="member-img-wrapper">
+              <img :src="member.imageUrl" :alt="member.name" class="member-img" @error="onImgError" />
+            </div>
 
             <div class="member-content">
-              <h4>Andrea Esposito</h4>
-              <span>Istruttore di sci</span>
-              <p>
-                Che tu sia alla tua prima discesa o voglia perfezionare la tecnica, ti accompagnerò con passione e
-                divertimento.
-              </p>
+              <h4>{{ member.name }}</h4>
+              <span>{{ member.role }}</span>
+              <p>{{ member.bio }}</p>
               <div class="social">
-                <a href="https://x.com/"><i class="bi bi-twitter-x"></i></a>
-                <a href="https://facebook.com/"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/"><i class="bi bi-instagram"></i></a>
-                <a href="https://linkedin.com/"><i class="bi bi-linkedin"></i></a>
+                <a :href="member.social.twitter" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a :href="member.social.facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a :href="member.social.instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a :href="member.social.linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
-        </div><!-- End Team Member -->
-
-        <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-          <div class="member">
-            <img v-if="image2 && image2.length"
-              :src="`data:${image2[0].getType()};base64,${image2[0].getEncodedData()}`" class="img-fluid" />
-            <img v-else :src="notFoundImg" class="img-fluid" />
-            <div class="member-content">
-              <h4>Giordana Di Fabio</h4>
-              <span>Istruttrice di snowboard</span>
-              <p>
-                Vivi lo snowboard al massimo! Con passione, energia e tanta esperienza, ti aiuto a trovare il tuo stile
-                sulla tavola
-              </p>
-              <div class="social">
-                <a href="https://x.com/"><i class="bi bi-twitter-x"></i></a>
-                <a href="https://facebook.com/"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/"><i class="bi bi-instagram"></i></a>
-                <a href="https://linkedin.com/"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Team Member -->
-
-        <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-          <div class="member">
-
-            <img v-if="image3 && image3.length"
-              :src="`data:${image3[0].getType()};base64,${image3[0].getEncodedData()}`" class="img-fluid" />
-            <img v-else :src="notFoundImg" class="img-fluid" />
-            <div class="member-content">
-              <h4>Lorenzo D'Amico</h4>
-              <span>Istruttore di sci alpinistico</span>
-              <p>
-                Appassionato di neve e silenzi d’alta quota, ti accompagno alla scoperta dello sci alpinismo con
-                attenzione, pazienza e grande amore per la montagna
-              </p>
-              <div class="social">
-                <a href="https://x.com/"><i class="bi bi-twitter-x"></i></a>
-                <a href="https://facebook.com/"><i class="bi bi-facebook"></i></a>
-                <a href="https://instagram.com/"><i class="bi bi-instagram"></i></a>
-                <a href="https://linkedin.com/"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Team Member -->
+        </div>
 
       </div>
-
     </div>
 
   </section>
 </template>
+
 <style scoped>
-.team .member {
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+.team {
+  padding: 80px 0;
+}
+
+/* Section title */
+.section-title {
   text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #63b3f5;
+  margin-bottom: 8px;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #5a7a9a;
+  font-size: 15px;
+}
+
+/* Member card */
+.member {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(42, 82, 152, 0.1);
+  box-shadow: 0 4px 24px rgba(26, 58, 92, 0.08);
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(26, 58, 92, 0.16);
+}
+
+/* Image */
+.member-img-wrapper {
+  background: linear-gradient(135deg, #1a3a5c 0%, #2a5298 100%);
+  padding: 32px 0 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.member-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.member:hover .member-img {
+  transform: scale(1.06);
+}
+
+/* Content */
+.member-content {
+  padding: 24px 24px 28px;
+}
+
+.member-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 4px;
+}
+
+.member-content span {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #63b3f5;
+  margin-bottom: 14px;
+}
+
+.member-content p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5a7a9a;
   margin-bottom: 20px;
 }
 
-.team .member img {
+/* Social icons */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  max-width: 60%;
-  margin: 30px 0;
+  border: 1.5px solid rgba(42, 82, 152, 0.2);
+  color: #2a5298;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.team .member .member-content {
-  padding: 0 20px 30px 20px;
-}
-
-.team .member h4 {
-  font-weight: 700;
-  margin-bottom: 2px;
-  font-size: 18px;
-}
-
-.team .member span {
-  font-style: italic;
-  display: block;
-  font-size: 13px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-}
-
-.team .member p {
-  padding-top: 10px;
-  font-size: 14px;
-  font-style: italic;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-}
-
-.team .member .social {
-  margin-top: 15px;
-}
-
-.team .member .social a {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-  transition: 0.3s;
-}
-
-.team .member .social a:hover {
-  color: var(--accent-color);
-}
-
-.team .member .social i {
-  font-size: 18px;
-  margin: 0 2px;
+.social a:hover {
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(26, 58, 92, 0.3);
 }
 </style>

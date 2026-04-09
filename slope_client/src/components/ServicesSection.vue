@@ -4,13 +4,10 @@
 <template>
     <section id="services" class="services section">
 
-        <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <span>Servizi</span>
-            <h2>Servizi</h2>
-            <p>La nostra piattaforma web permette di monitorare diversi impianti sciistici in modo tale da poter
-                organizzare una splendida giornata in montagna</p>
-        </div><!-- End Section Title -->
+            <h2>Services</h2>
+            <p>Our platform lets you monitor multiple ski resorts so you can plan the perfect mountain day</p>
+        </div>
 
         <div class="container">
 
@@ -21,113 +18,169 @@
                         <div class="icon">
                             <i class="bi bi-snow"></i>
                         </div>
-                        <router-link to="/login" class="stretched-link">
-                            <a><h3>Monitoraggio impianti</h3></a>
-                        </router-link>
-                        <p>Consulta le condizioni odierne dei nostri comprensori sciistici</p>
+                        <h3>Resort Monitoring</h3>
+                        <p>Check today's conditions across all our ski resorts in real time.</p>
+                        <router-link to="/login" class="stretched-link" />
                     </div>
-                </div><!-- End Service Item -->
+                </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi bi-cash-stack"></i>
                         </div>
-                        <a href="#pricing" class="stretched-link">
-                            <h3>Listino prezzi</h3>
-                        </a>
-                        <p>Consulta i prezzi e le opportunità</p>
+                        <h3>Price List</h3>
+                        <p>Browse current prices, deals, and available packages.</p>
+                        <a href="#pricing" class="stretched-link"/>
                     </div>
-                </div><!-- End Service Item -->
+                </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi bi-cart"></i>
                         </div>
-                        <a href="https://www.opensnowmap.org/#map=12/14.017/41.819&b=snowmap&m=false&h=false"
-                            target="_blank" class="stretched-link">
-                            <h3>Mappe</h3>
-                        </a>
-                        <p>Dai un occhiata alle mappe degli impianti sciistici.</p>
+                        <h3>Trail Maps</h3>
+                        <p>Explore interactive maps of all ski resort slopes and lifts.</p>
+                        <a
+                        href="https://www.opensnowmap.org/#map=12/14.017/41.819&b=snowmap&m=false&h=false"
+                        target="_blank"
+                        class="stretched-link"
+                        />
                     </div>
-                </div><!-- End Service Item -->
+                </div>
             </div>
         </div>
 
     </section>
 </template>
 <style scoped>
-.services .service-item {
-  text-align: center;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-  padding: 80px 20px;
-  transition: all ease-in-out 0.3s;
-  height: 100%;
+.services {
+  padding: 80px 0;
 }
 
-.services .service-item .icon {
+/* Section title */
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #63b3f5;
+  margin-bottom: 8px;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #5a7a9a;
+  font-size: 15px;
+  max-width: 600px;
   margin: 0 auto;
-  width: 64px;
-  height: 64px;
-  background: var(--accent-color);
+}
+
+/* Service card */
+.service-item {
+  text-align: center;
+  padding: 48px 28px;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(42, 82, 152, 0.12);
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(26, 58, 92, 0.07);
+  transition: all 0.3s ease;
+}
+
+.service-item:hover {
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  border-color: transparent;
+  box-shadow: 0 12px 40px rgba(26, 58, 92, 0.28);
+  transform: translateY(-6px);
+}
+
+/* Icon */
+.service-item .icon {
+  margin: 0 auto 24px auto;
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #1a3a5c, #2a5298);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(26, 58, 92, 0.25);
   transform-style: preserve-3d;
+  position: relative;
 }
 
-.services .service-item .icon i {
-  color: var(--contrast-color);
-  font-size: 28px;
-  transition: ease-in-out 0.3s;
-}
-
-.services .service-item .icon::before {
-  position: absolute;
+.service-item .icon::before {
   content: "";
-  left: -8px;
-  top: -8px;
-  height: 100%;
+  position: absolute;
+  left: -6px;
+  top: -6px;
   width: 100%;
-  background: color-mix(in srgb, var(--accent-color), transparent 80%);
-  transition: all 0.3s ease-out 0s;
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(99, 179, 245, 0.2);
   transform: translateZ(-1px);
+  transition: all 0.3s ease;
 }
 
-.services .service-item h3 {
+.service-item .icon i {
+  color: #ffffff;
+  font-size: 28px;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .icon {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-item:hover .icon::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.service-item:hover .icon i {
+  color: #63b3f5;
+}
+
+/* Text */
+.service-item h3 {
+  font-size: 1.2rem;
   font-weight: 700;
-  margin: 10px 0 15px 0;
-  font-size: 22px;
+  color: #1a3a5c;
+  margin: 0 0 12px 0;
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
-.services .service-item p {
-  line-height: 24px;
+.service-item p {
   font-size: 14px;
-  margin-bottom: 0;
+  line-height: 1.7;
+  color: #5a7a9a;
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
-.services .service-item:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
+.service-item:hover h3,
+.service-item:hover p {
+  color: #ffffff;
 }
 
-.services .service-item:hover .icon {
-  background: var(--contrast-color);
-}
-
-.services .service-item:hover .icon i {
-  color: var(--accent-color);
-}
-
-.services .service-item:hover .icon::before {
-  background: color-mix(in srgb, var(--background-color), transparent 70%);
-}
-
-.services .service-item:hover h3,
-.services .service-item:hover p {
-  color: var(--contrast-color);
+/* Fix stretched-link inside router-link */
+.stretched-link {
+  text-decoration: none;
 }
 </style>
