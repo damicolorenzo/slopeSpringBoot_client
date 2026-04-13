@@ -21,7 +21,7 @@ onMounted(async () => {
 <template>
   <section id="pricing" class="pricing section">
 
-    <div class="container selector-wrapper" data-aos="fade-up">
+    <div class="container selector-wrapper">
 
       <div class="facility-card">
         <h2>Select a resort and explore prices</h2>
@@ -42,14 +42,14 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div class="container section-title" data-aos="fade-up">
+    <div class="container section-title">
       <h2>Pricing</h2>
       <p>Choose the plan that best fits your skiing days</p>
     </div>
 
     <div class="container">
       <div class="row g-4 g-lg-0">
-        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-lg-4">
           <div class="pricing-item">
             <h3>Daily</h3>
             <div class="price">
@@ -68,7 +68,7 @@ onMounted(async () => {
           </div>
         </div>
         
-        <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
+        <div class="col-lg-4 featured">
           <div class="pricing-item">
             <div class="badge">Most Popular</div>
             <h3>Weekly</h3>
@@ -88,7 +88,7 @@ onMounted(async () => {
           </div>
         </div>
 
-        <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="col-lg-4">
           <div class="pricing-item">
             <h3>Monthly</h3>
             <div class="price">

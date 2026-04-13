@@ -12,7 +12,7 @@ import ctaVideo from '@/assets/4185213-uhd_4096_2160_24fps.mp4'
     <div class="cta-overlay"></div>
 
     <div class="container">
-      <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row justify-content-center">
         <div class="col-xl-8 col-lg-10">
           <div class="text-center cta-content">
             <h3>Ready for your next run?</h3>

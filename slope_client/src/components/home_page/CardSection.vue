@@ -24,7 +24,7 @@ const onImgError = (e) => {
 <template>
     <section id="cards" class="cards section">
 
-        <div class="container section-title" data-aos="fade-up">
+        <div class="container section-title">
             <h2>Whero to Ski</h2>
             <p>Choose your slope among Abruzzo's ski resorts</p>
         </div>
@@ -34,7 +34,7 @@ const onImgError = (e) => {
                 <div class="row no-gutters">
 
                     <div v-for="facility in skiFacilities" :key="facility.id"
-                        class="col-lg-4 col-md-6 card img-overlay-box" data-aos="fade-up" data-aos-delay="100">
+                        class="col-lg-4 col-md-6 card img-overlay-box">
 
                         <div class="ski-card">
                           <img

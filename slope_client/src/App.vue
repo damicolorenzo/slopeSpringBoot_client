@@ -1,18 +1,27 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Header from '@/components/home_page/Header.vue'
+import HeaderLoggedIn from'@/components/logged_home/HeaderLoggedIn.vue'
+import Footer from '@/components/home_page/Footer.vue'
 
-const route = useRoute()
+const route = useRoute();
+
 const showLayout = computed(() =>
   !['login', 'registration'].includes(route.name)
-)
+);
+
+const loggedInRoutes = ['loggedHome'];
+
+const isLoggedIn = computed(() => loggedInRoutes.includes(route.name));
 </script>
 
 <template>
-  <Header v-if="showLayout" />
-  <router-view />
+  <HeaderLoggedIn v-if="showLayout && isLoggedIn" />
+  <Header v-else-if="showLayout"/>
+  <main>
+    <router-view />
+  </main>
   <Footer v-if="showLayout" />
 </template>
 
@@ -58,5 +67,9 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
+}
+
+main {
+  padding-top: var(--header-height);
 }
 </style>

@@ -4,7 +4,7 @@
 <template>
     <section id="services" class="services section">
 
-        <div class="container section-title" data-aos="fade-up">
+        <div class="container section-title">
             <h2>Services</h2>
             <p>Our platform lets you monitor multiple ski resorts so you can plan the perfect mountain day</p>
         </div>
@@ -13,7 +13,7 @@
 
             <div class="row gy-4">
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6">
                     <div class="service-item  position-relative">
                         <div class="icon">
                             <i class="bi bi-snow"></i>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi bi-cash-stack"></i>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6">
                     <div class="service-item position-relative">
                         <div class="icon">
                             <i class="bi bi-cart"></i>

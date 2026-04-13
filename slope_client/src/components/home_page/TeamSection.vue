@@ -48,7 +48,7 @@ const onImgError = (e) => {
 <template>
   <section id="team" class="team section">
 
-    <div class="container section-title" data-aos="fade-up">
+    <div class="container section-title">
       <h2>Team</h2>
       <p>We turn ideas into code and code into digital experiences.</p>
     </div>
@@ -57,8 +57,7 @@ const onImgError = (e) => {
 
       <div class="row gy-4 justify-content-center">
 
-        <div v-for="(member, index) in members" :key="index" class="col-lg-4 col-md-6 d-flex" data-aos="fade-up"
-          :data-aos-delay="(index + 1) * 100">
+        <div v-for="(member, index) in members" :key="index" class="col-lg-4 col-md-6 d-flex">
           <div class="member">
             <div class="member-img-wrapper">
               <img :src="member.imageUrl" :alt="member.name" class="member-img" @error="onImgError" />

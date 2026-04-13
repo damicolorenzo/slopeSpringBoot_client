@@ -1,12 +1,13 @@
 <script setup>
-import AboutSection from '@/components/AboutSection.vue'
-import CallToAction from '@/components/CallToAction.vue'
-import CardSection from '@/components/CardSection.vue'
-import HeroSection from '@/components/HeroSection.vue'
-import ServicesSection from '@/components/ServicesSection.vue'
-import PricingSection from '@/components/PricingSection.vue'
-import TeamSection from '@/components/TeamSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
+import AboutSection from '@/components/home_page/AboutSection.vue'
+import CallToAction from '@/components/home_page/CallToAction.vue'
+import CardSection from '@/components/home_page/CardSection.vue'
+import ContactSection from '@/components/home_page/ContactSection.vue'
+import HeroSection from '@/components/home_page/HeroSection.vue'
+import PricingSection from '@/components/home_page/PricingSection.vue'
+import ServicesSection from '@/components/home_page/ServicesSection.vue'
+import TeamSection from '@/components/home_page/TeamSection.vue'
+
 </script>
 
 <template>

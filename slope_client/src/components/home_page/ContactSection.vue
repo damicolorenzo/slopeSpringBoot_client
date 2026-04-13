@@ -1,16 +1,16 @@
 <template>
   <section id="contact" class="contact section">
 
-    <div class="container section-title" data-aos="fade-up">
+    <div class="container section-title">
       <h2>Contatti</h2>
       <p>Find all our contact details right here</p>
     </div>
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
 
       <div class="row gy-4 justify-content-center">
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-4 col-md-6">
           <div class="info-item">
             <div class="info-icon">
               <i class="bi bi-geo-alt"></i>
@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-4 col-md-6">
           <div class="info-item">
             <div class="info-icon">
               <i class="bi bi-telephone"></i>
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-lg-4 col-md-6">
           <div class="info-item">
             <div class="info-icon">
               <i class="bi bi-envelope"></i>
@@ -44,7 +44,7 @@
 
       </div>
 
-      <div class="row mt-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="row mt-4">
         <div class="col-12">
           <div class="map-wrapper">
             <iframe
