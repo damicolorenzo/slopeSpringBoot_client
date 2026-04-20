@@ -1,10 +1,18 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+
+const auth = useAuthStore()
 
 const router = useRouter()
 
 const mobileNavActive = ref(false)
+
+const handleLogout = () => {
+  auth.clearToken()
+  router.push('/login')
+}
 
 const toggleMobileNav = () => {
   mobileNavActive.value = !mobileNavActive.value

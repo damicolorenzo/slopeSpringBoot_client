@@ -1,30 +1,39 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
 const router = useRouter()
+
 const email = ref('')
 const password = ref('')
 const showPassword = ref(false)
 const loading = ref(false)
 const error = ref('')
 
+const auth = useAuthStore()
+
 const handleLogin = async () => {
   if (!email.value || !password.value) {
     error.value = 'Please fill in all fields.'
     return
   }
+
   error.value = ''
   loading.value = true
+
   try {
-    const response = await fetch('http://localhost:9194/api/v1/auth/login', {
+    const res = await fetch('/api/v1/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.value, password: password.value })
+      body: JSON.stringify({ email: email.value, password: password.value }),
     })
-    const data = await response.json()
-    if (data.message === 'Success') {
-      router.push('/dashboard')
+
+    const data = await res.json()
+
+    if (res.ok && data.message === 'Login success') {
+      auth.setToken(data.data.token)
+      router.push('/home')
     } else {
       error.value = data.message || 'Invalid credentials. Please try again.'
     }
@@ -170,6 +179,7 @@ const handleLogin = async () => {
 .login-logo a {
   text-decoration: none;
 }
+
 /* Headings */
 .login-box h1 {
   font-size: 1.8rem;

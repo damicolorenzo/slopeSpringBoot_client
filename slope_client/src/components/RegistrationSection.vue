@@ -2,58 +2,66 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const router = useRouter()
+const router = useRouter();
 
-const firstName = ref('')
-const lastName = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
-const phoneNumber = ref('')
-const birthDate = ref('')
-const showPassword = ref(false)
-const showConfirmPassword = ref(false)
-const loading = ref(false)
-const error = ref('')
-const success = ref(false)
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
+const password = ref('');
+const confirmPassword = ref('');
+const phoneNumber = ref('');
+const birthDate = ref('');
+const showPassword = ref(false);
+const showConfirmPassword = ref(false);
+const loading = ref(false);
+const error = ref('');
+const success = ref(false);
 
 const validate = () => {
   if (!firstName.value || !lastName.value || !email.value || !password.value || !confirmPassword.value || !phoneNumber.value || !birthDate.value) {
-    error.value = 'Please fill in all fields.'
-    return false
+    error.value = 'Please fill in all fields.';
+    return false;
   }
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    error.value = 'Please enter a valid email address.'
-    return false
+    error.value = 'Please enter a valid email address.';
+    return false;
   }
+
   if (!/^\+?[\d\s\-().]{7,20}$/.test(phoneNumber.value)) {
-    error.value = 'Please enter a valid phone number.'
-    return false
+    error.value = 'Please enter a valid phone number.';
+    return false;
   }
-  const birth = new Date(birthDate.value)
-  const age = Math.floor((Date.now() - birth) / (365.25 * 24 * 60 * 60 * 1000))
+
+  const birth = new Date(birthDate.value);
+  const age = Math.floor((Date.now() - birth) / (365.25 * 24 * 60 * 60 * 1000));
+
   if (age < 16) {
-    error.value = 'You must be at least 16 years old to register.'
-    return false
+    error.value = 'You must be at least 16 years old to register.';
+    return false;
   }
+
   if (password.value.length < 8) {
-    error.value = 'Password must be at least 8 characters.'
-    return false
+    error.value = 'Password must be at least 8 characters.';
+    return false;
   }
+
   if (password.value !== confirmPassword.value) {
-    error.value = 'Passwords do not match.'
-    return false
+    error.value = 'Passwords do not match.';
+    return false;
   }
-  return true
+
+  return true;
 }
 
 const handleRegister = async () => {
-  error.value = ''
-  if (!validate()) return
+  error.value = '';
+  if (!validate()) return;
 
-  loading.value = true
+  loading.value = true;
+
   try {
-    const response = await fetch('http://localhost:9194/api/v1/auth/register', {
+    const response = await fetch('/api/v1/users/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -62,12 +70,15 @@ const handleRegister = async () => {
         email: email.value,
         password: password.value,
         phoneNumber: phoneNumber.value,
-        birthDate: birthDate.value
+        birthDate: birthDate.value,
+        username: email.value,
       })
-    })
-    const data = await response.json()
-    if (data.message === 'Success') {
-      success.value = true
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      success.value = true;
       setTimeout(() => router.push('/login'), 2000)
     } else {
       error.value = data.message || 'Registration failed. Please try again.'

@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import notFoundImg from '@/assets/NotFound.jpg'
+import { fetchAuth } from '@/api/fetchAuth'
 
 const router = useRouter()
 
@@ -18,11 +20,7 @@ const error = ref(null)
 onMounted(async () => {
   try {
     // TODO: replace with your actual Spring Boot endpoints
-    const [profileRes, creditCardRes, subscriptionRes] = await Promise.all([
-      fetch('/api/user/profile'),
-      fetch('/api/user/credit-card'),
-      fetch('/api/user/subscription'),
-    ])
+    const profileRes = await fetchAuth('/api/v1/users/1/user')
 
     if (!profileRes.ok) throw new Error('Failed to load profile')
 
@@ -102,7 +100,7 @@ const handleLogout = () => {
             <img
               v-else
               class="profile-pic"
-              src="/images/NotFound.jpg"
+              :src="notFoundImg"
               loading="lazy"
               alt="No profile picture"
             />
