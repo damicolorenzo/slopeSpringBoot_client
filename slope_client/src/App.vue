@@ -11,7 +11,7 @@ const showLayout = computed(() =>
   !['login', 'registration'].includes(route.name)
 );
 
-const loggedInRoutes = ['loggedHome'];
+const loggedInRoutes = ['loggedHome', 'bookings', 'profile'];
 
 const isLoggedIn = computed(() => loggedInRoutes.includes(route.name));
 </script>
@@ -70,6 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
-  padding-top: var(--header-height);
+  padding-top: 20px;
 }
 </style>

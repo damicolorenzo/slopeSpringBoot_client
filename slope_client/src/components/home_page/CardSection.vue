@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import notFoundImg from '@/assets/NotFound.jpg'
+import { ref, onMounted } from 'vue';
+import notFoundImg from '@/assets/NotFound.jpg';
 
 const skiFacilities = ref([]);
 

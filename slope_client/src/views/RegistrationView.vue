@@ -1,5 +1,5 @@
 <script setup>
-import RegistrationSection from '@/components/RegistrationSection.vue'
+import RegistrationSection from '@/components/RegistrationSection.vue';
 </script>
 
 <template>

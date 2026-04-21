@@ -1,5 +1,5 @@
 <script setup>
-import ctaVideo from '@/assets/4185213-uhd_4096_2160_24fps.mp4'
+import ctaVideo from '@/assets/4185213-uhd_4096_2160_24fps.mp4';
 </script>
 
 <template>

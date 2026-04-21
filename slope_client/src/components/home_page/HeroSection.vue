@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue'
-import notFoundImg from '@/assets/NotFound.jpg'
-import img1 from '@/assets/foto1.jpg'
+import { ref } from 'vue';
+import notFoundImg from '@/assets/NotFound.jpg';
+import img1 from '@/assets/foto1.jpg';
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup>
-import notFoundImg from '@/assets/NotFound.jpg'
+import notFoundImg from '@/assets/NotFound.jpg';
 
 const members = [
   {

@@ -1,30 +1,32 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useAuthStore } from '@/stores/auth';
 
-const facilities = ref([])
-const loading = ref(true)
-const error = ref('')
+const auth = useAuthStore();
+const facilities = ref([]);
+const loading = ref(true);
+const error = ref('');
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:9194/api/v1/skifacilities/all')
-    const data = await response.json()
+    console.log(auth.id);
+    const response = await fetch('http://localhost:9194/api/v1/skifacilities/all');
+    const data = await response.json();
     if (data.message === 'Success') {
-      facilities.value = data.data
-      console.log(facilities);
+      facilities.value = data.data;
     } else {
-      error.value = 'Failed to load ski facilities.'
+      error.value = 'Failed to load ski facilities.';
     }
   } catch (err) {
-    error.error = 'Connection error. Please try again.'
+    error.error = 'Connection error. Please try again.';
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-})
+});
 
 const getRunsByType = (facility, type) => {
-  return facility.countSkiRun?.find(r => r.type === type)?.CNT || 0
-}
+  return facility.countSkiRun?.find(r => r.type === type)?.CNT || 0;
+};
 </script>
 
 <template>

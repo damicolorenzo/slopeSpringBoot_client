@@ -3,44 +3,44 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 
-const router = useRouter()
+const router = useRouter();
 
-const email = ref('')
-const password = ref('')
-const showPassword = ref(false)
-const loading = ref(false)
-const error = ref('')
+const email = ref('');
+const password = ref('');
+const showPassword = ref(false);
+const loading = ref(false);
+const error = ref('');
 
-const auth = useAuthStore()
+const auth = useAuthStore();
 
 const handleLogin = async () => {
   if (!email.value || !password.value) {
-    error.value = 'Please fill in all fields.'
-    return
+    error.value = 'Please fill in all fields.';
+    return;
   }
 
-  error.value = ''
-  loading.value = true
+  error.value = '';
+  loading.value = true;
 
   try {
     const res = await fetch('/api/v1/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email.value, password: password.value }),
-    })
+    });
 
-    const data = await res.json()
+    const data = await res.json();
 
     if (res.ok && data.message === 'Login success') {
-      auth.setToken(data.data.token)
-      router.push('/home')
+      auth.setToken(data.data.token);
+      router.push('/home');
     } else {
-      error.value = data.message || 'Invalid credentials. Please try again.'
+      error.value = data.message || 'Invalid credentials. Please try again.';
     }
   } catch (err) {
-    error.value = 'Connection error. Please try again.'
+    error.value = 'Connection error. Please try again.';
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 </script>

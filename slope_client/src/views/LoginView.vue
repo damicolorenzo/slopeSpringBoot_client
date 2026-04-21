@@ -1,5 +1,5 @@
 <script setup>
-import LoginSection from '@/components/LoginSection.vue'
+import LoginSection from '@/components/LoginSection.vue';
 </script>
 
 <template>

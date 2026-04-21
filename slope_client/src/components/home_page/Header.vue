@@ -1,26 +1,26 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const activeSection = ref('hero')
+const activeSection = ref('hero');
 
-const sections = ['hero', 'about', 'cards', 'services', 'pricing', 'team', 'contact']
+const sections = ['hero', 'about', 'cards', 'services', 'pricing', 'team', 'contact'];
 
 const onScroll = () => {
-  const scrollY = window.scrollY + 80 // offset for fixed header
+  const scrollY = window.scrollY + 80; // offset for fixed header
 
   for (let i = sections.length - 1; i >= 0; i--) {
-    const el = document.getElementById(sections[i])
+    const el = document.getElementById(sections[i]);
     if (el && el.offsetTop <= scrollY) {
-      activeSection.value = sections[i]
-      return
+      activeSection.value = sections[i];
+      return;
     }
   }
 
-  activeSection.value = 'hero'
+  activeSection.value = 'hero';
 }
 
-onMounted(() => window.addEventListener('scroll', onScroll))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onMounted(() => window.addEventListener('scroll', onScroll));
+onUnmounted(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <template>

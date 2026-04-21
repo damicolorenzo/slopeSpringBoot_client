@@ -1,71 +1,63 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 
-// --- State ---
-const bookings = ref([])
-const oldBookings = ref([])
-const loading = ref(true)
-const error = ref(null)
+const bookings = ref([]);
+const oldBookings = ref([]);
+const loading = ref(true);
+const error = ref(null);
 
-// --- Fetch bookings from Spring Boot ---
 onMounted(async () => {
     try {
-        // TODO: replace with your actual Spring Boot endpoints
         const [bookingsRes, oldBookingsRes] = await Promise.all([
             fetch('/api/bookings'),
             fetch('/api/bookings/old'),
-        ])
+        ]);
 
-        if (!bookingsRes.ok) throw new Error('Failed to load bookings')
+        if (!bookingsRes.ok) throw new Error('Failed to load bookings');
 
-        bookings.value = await bookingsRes.json()
+        bookings.value = await bookingsRes.json();
 
         if (oldBookingsRes.ok) {
-            oldBookings.value = await oldBookingsRes.json()
+            oldBookings.value = await oldBookingsRes.json();
         }
     } catch (err) {
-        error.value = err.message
+        error.value = err.message;
     } finally {
-        loading.value = false
+        loading.value = false;
     }
 })
 
-// --- Actions ---
 const handleModify = (idSkipassBooking) => {
-    // TODO: navigate to modify booking page or open modal
-    router.push(`/bookings/modify/${idSkipassBooking}`)
+    router.push(`/bookings/modify/${idSkipassBooking}`);
 }
 
 const handleDelete = async (idSkipassBooking) => {
-    // TODO: replace with your actual Spring Boot endpoint
     try {
-        const res = await fetch(`/api/bookings/${idSkipassBooking}`, { method: 'DELETE' })
-        if (!res.ok) throw new Error('Failed to delete booking')
+        const res = await fetch(`/api/bookings/${idSkipassBooking}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Failed to delete booking');
         bookings.value = bookings.value.filter(
             (e) => e.booking.idSkipassBooking !== idSkipassBooking
-        )
+        );
     } catch (err) {
-        console.error('Delete error:', err)
+        console.error('Delete error:', err);
     }
 }
 
 const handleBuyInsurance = async (idSkipassBooking) => {
-    // TODO: replace with your actual Spring Boot endpoint
     try {
         const res = await fetch('/api/insurance/buy', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idSkipassBooking }),
-        })
-        if (!res.ok) throw new Error('Failed to buy insurance')
-        // Refresh bookings after purchase
-        const updated = await fetch('/api/bookings')
-        bookings.value = await updated.json()
+        });
+        if (!res.ok) throw new Error('Failed to buy insurance');
+        const updated = await fetch('/api/bookings');
+        bookings.value = await updated.json();
     } catch (err) {
-        console.error('Insurance error:', err)
+        console.error('Insurance error:', err);
     }
 }
 </script>

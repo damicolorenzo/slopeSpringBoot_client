@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <footer id="footer" class="footer">
 

@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <section id="services" class="services section">
 

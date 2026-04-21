@@ -1,32 +1,32 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
-const auth = useAuthStore()
+const auth = useAuthStore();
 
-const router = useRouter()
+const router = useRouter();
 
-const mobileNavActive = ref(false)
+const mobileNavActive = ref(false);
 
 const handleLogout = () => {
-  auth.clearToken()
-  router.push('/login')
+  auth.clearToken();
+  router.push('/login');
 }
 
 const toggleMobileNav = () => {
-  mobileNavActive.value = !mobileNavActive.value
-  document.body.classList.toggle('mobile-nav-active', mobileNavActive.value)
+  mobileNavActive.value = !mobileNavActive.value;
+  document.body.classList.toggle('mobile-nav-active', mobileNavActive.value);
 }
 
 const closeMobileNav = () => {
-  mobileNavActive.value = false
-  document.body.classList.remove('mobile-nav-active')
+  mobileNavActive.value = false;
+  document.body.classList.remove('mobile-nav-active');
 }
 
 onUnmounted(() => {
-  document.body.classList.remove('mobile-nav-active')
-})
+  document.body.classList.remove('mobile-nav-active');
+});
 </script>
 
 <template>

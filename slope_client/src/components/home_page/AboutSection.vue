@@ -1,6 +1,6 @@
 <script setup>
-import notFoundImg from '@/assets/NotFound.jpg'
-import img1 from '@/assets/foto2.jpg'
+import notFoundImg from '@/assets/NotFound.jpg';
+import img1 from '@/assets/foto2.jpg';
 
 </script>
 
