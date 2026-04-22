@@ -14,7 +14,6 @@ onMounted(async () => {
         const res = await fetch(`/api/v1/users/${auth.userId}/user`, {
             headers: { Authorization: `Bearer ${auth.token}` }
         });
-        console.log(res);
         const data = await res.json();
         if (res.ok) user.value = data.data;
         else error.value = data.message;
@@ -27,6 +26,7 @@ onMounted(async () => {
 
 const logout = () => { auth.clearToken(); router.push('/login') };
 const formatDate = (d) => d ? new Date(d).toLocaleDateString('en-GB') : '—';
+
 </script>
 
 <template>
@@ -137,7 +137,7 @@ nav a.router-link-active {
 }
 
 .main {
-    padding: 40px;
+    padding: 80px;
     max-width: 900px;
     margin: 0 auto;
 }

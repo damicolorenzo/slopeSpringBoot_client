@@ -31,7 +31,7 @@ const cancelBooking = async (bookingId) => {
             method: 'DELETE',
             headers: { Authorization: `Bearer ${auth.token}` }
         });
-        if (res.ok) bookingId.value = bookings.value.filter(b => b.id !== bookingId);
+        if (res.ok) bookings.value = bookings.value.filter(b => b.id !== bookingId);
         else alert('Could not cancel booking.');
     } catch {
         alert('Connection error.');
@@ -144,7 +144,7 @@ nav a.router-link-active {
 }
 
 .main {
-    padding: 40px;
+    padding: 80px;
     max-width: 1000px;
     margin: 0 auto;
 }

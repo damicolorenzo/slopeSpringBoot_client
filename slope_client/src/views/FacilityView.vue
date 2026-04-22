@@ -38,7 +38,7 @@ const submitBooking = async () => {
         return;
     }
     bookingError.value = '';
-    bookingLoading = true;
+    bookingLoading.value = true;
     try {
         const res = await fetch(`/api/v1/bookings/booking?userId=${auth.userId}`, {
             method: 'POST',
@@ -99,7 +99,7 @@ const statusLabel = (s) => s ? 'Open' : 'Closed';
                             <tbody>
                                 <tr v-for="run in facility.skiRuns" :key="run.id">
                                     <td>{{ run.name }}</td>
-                                    <td>{{ run.type }}</td>
+                                    <td>{{ run.difficulty }}</td>
                                     <td :class="statusClass(run.status)">{{ statusLabel(run.status) }}</td>
                                 </tr>
                             </tbody>
@@ -224,7 +224,7 @@ nav a.router-link-active {
 }
 
 .main {
-    padding: 40px;
+    padding: 80px;
     max-width: 1000px;
     margin: 0 auto;
 }

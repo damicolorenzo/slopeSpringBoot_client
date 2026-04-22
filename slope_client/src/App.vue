@@ -11,7 +11,7 @@ const showLayout = computed(() =>
   !['login', 'registration'].includes(route.name)
 );
 
-const loggedInRoutes = ['loggedHome', 'bookings', 'profile'];
+const loggedInRoutes = ['loggedHome', 'bookings', 'profile', 'facility'];
 
 const isLoggedIn = computed(() => loggedInRoutes.includes(route.name));
 </script>

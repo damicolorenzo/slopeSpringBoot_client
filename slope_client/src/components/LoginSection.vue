@@ -33,6 +33,7 @@ const handleLogin = async () => {
 
     if (res.ok && data.message === 'Login success') {
       auth.setToken(data.data.token);
+      auth.setUserId(data.data.id);
       router.push('/home');
     } else {
       error.value = data.message || 'Invalid credentials. Please try again.';

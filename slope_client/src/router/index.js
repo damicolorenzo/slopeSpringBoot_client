@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import HomeView from '@/views/HomeView.vue';
+
 import LoginView from '@/views/LoginView.vue';
 import RegistrationView from '@/views/RegistrationView.vue';
+
 import LoggedHome from '@/views/LoggedHomeView.vue';
 import BookingsView from '@/views/BookingsView.vue';
 import ProfileView from '@/views/ProfileView.vue';
@@ -15,7 +17,7 @@ const routes = [
   { path: '/home', name: 'loggedHome', component: LoggedHome },
   { path: '/bookings', name: 'bookings',  component: BookingsView },
   { path: '/profile', name: 'profile',  component: ProfileView },
-  { path: '/facility/:id', component: FacilityView },
+  { path: '/facility/:id', name: 'facility', component: FacilityView },
 ];
 
 const router = createRouter({
